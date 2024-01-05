@@ -1,0 +1,66 @@
+library(cryptoQuotes)
+library(dplyr)
+
+library(ggplot2)
+library(gridExtra)
+?cryptoQuotes
+browseVignettes("cryptoQuotes")
+
+# 1) getting hourly ATOM
+# from the last 3 days
+# Obter os dados da ATOMUSDT
+ATOMUSDT <- cryptoQuotes::getQuote(
+  ticker   = "ATOMUSDT",
+  source   = "binance",
+  futures  = FALSE,
+  interval = "1h",
+  from     = as.character(Sys.Date() - 3)
+)
+
+# ## Create a chart
+# 2) Primeiro gráfico com dados da ATOM
+cryptoQuotes::chart(
+  cryptoQuotes::kline(ATOMUSDT, deficiency = FALSE) %>%
+    cryptoQuotes::addVolume() %>%
+    cryptoQuotes::addBBands(cols = c('close'))
+)
+
+# 3) getting hourly BTC
+# from the last 3 days
+BTC <- cryptoQuotes::getQuote(
+  ticker   = "BTCUSDT",
+  source   = "binance",
+  futures  = FALSE,
+  interval = "1h",
+  from     = as.character(Sys.Date() - 3)
+)
+
+# 4) Criando um gráfico com os dados do BTC
+cryptoQuotes::chart(
+  cryptoQuotes::kline(BTC, deficiency = FALSE) %>%
+    cryptoQuotes::addVolume() %>%
+    cryptoQuotes::addBBands(cols = c('close'))
+)
+
+# Obter dados para Ethereum
+ETHUSDT <- cryptoQuotes::getQuote(
+  ticker   = "ETHUSDT",
+  source   = "binance",
+  futures  = FALSE,
+  interval = "1h",
+  from     = as.character(Sys.Date() - 3)
+)
+
+# Obter dados para Ripple
+XRPUSDT <- cryptoQuotes::getQuote(
+  ticker   = "XRPUSDT",
+  source   = "binance",
+  futures  = FALSE,
+  interval = "1h",
+  from     = as.character(Sys.Date() - 3)
+)
+
+
+# Supondo que você já tenha os data frames BTC, ATOMUSDT, ETHUSDT e XRPUSDT
+# Criando quatro gráficos individuais
+p1 <- ggplot(BTC, aes(x = index, y = close)) + geom_line() + ggtitle("BTC
