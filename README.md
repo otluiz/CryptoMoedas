@@ -62,6 +62,25 @@ A volatilidade do mercado de criptomoedas e a falta de uma base tangível para m
 - [ ] Realizar testes em ambientes de simulação e auditorias de segurança.
 - [ ] Lançamento da fase beta para testes públicos.
 
+
+## Configuração do Banco de Dados
+
+Para configurar o banco de dados, siga os passos abaixo:
+
+1. Certifique-se de que o MariaDB está instalado e em execução.
+2. Conecte-se ao MariaDB com um usuário com permissões adequadas,normalmente o root é o usuário padrão, por exemplo:
+    ```bash
+    mysql -u seu_usuario -p
+    ```
+3. Execute o script de criação do banco de dados:
+    ```sql
+    source caminho/para/database_schema.sql;
+    ```
+4. O banco de dados `cryptoBD` e suas tabelas serão criados.
+
+
+
+
 ## Contato
 
 Para mais informações ou dúvidas sobre o projeto, entre em contato com o time de desenvolvimento em [prof.othon.oliveira@gmail.com](mailto:prof.othon.oliveira@gmail.com).
