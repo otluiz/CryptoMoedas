@@ -2,7 +2,7 @@
 # Esta é uma simples implementação de um web scraping para constuir
 # um grá fico das principais cripto moedas do site coingecko:
 # url = "https://www.coingecko.com/en/crypto-gainers-losers"
-#
+# <!--testanto o clone remote --> 
 
 import requests
 from bs4 import BeautifulSoup
